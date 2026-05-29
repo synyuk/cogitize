@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHASE — Independent minds only</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{--y:#FFE500;--p:#C84BFF;--b:#0A0A0A;--w:#FFFFFF;--g:#F2F2F2}
+        html{scroll-behavior:smooth;overflow-x:hidden}
+        body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--b);overflow-x:hidden}
+        a{text-decoration:none;color:inherit}
+
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:56px}
+        .nav-logo{font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase}
+        .nav-links{display:flex;gap:32px;list-style:none}
+        .nav-links a{font-size:14px;opacity:.6;transition:opacity .2s}.nav-links a:hover{opacity:1}
+        .btn-login{font-size:14px;font-weight:500;border:1.5px solid var(--b);border-radius:6px;padding:7px 20px;cursor:pointer;transition:background .2s,color .2s;display:inline-block}
+        .btn-login:hover{background:var(--b);color:var(--w)}
+
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 24px 80px;text-align:center;position:relative;overflow:hidden}
+        .hero-badge{display:inline-block;background:var(--p);color:#fff;font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;margin-bottom:28px;letter-spacing:.04em}
+        .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(90px,18vw,200px);line-height:.9;background:repeating-linear-gradient(0deg,#0A0A0A 0px,#0A0A0A 8px,#fff 8px,#fff 16px);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;-webkit-text-stroke:2px #0A0A0A}
+        .hero-sub{font-size:16px;color:rgba(0,0,0,.5);margin-bottom:28px}
+        .btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--y);color:var(--b);font-weight:600;font-size:14px;padding:12px 28px;border-radius:8px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+        .btn-cta:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(255,229,0,.5)}
+
+        .ticker{background:var(--y);overflow:hidden;white-space:nowrap;padding:10px 0;border-top:1.5px solid var(--b);border-bottom:1.5px solid var(--b)}
+        .ticker-track{display:inline-flex;animation:tick 22s linear infinite}
+        .ticker-item{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:0 20px}
+        .ticker-sep{opacity:.3;font-size:10px}
+        @keyframes tick{to{transform:translateX(-50%)}}
+
+        .mission{background:var(--g);padding:80px 0 0;overflow:hidden}
+        .mission-label{text-align:center;font-size:13px;font-family:'Permanent Marker',cursive;color:var(--p);margin-bottom:12px}
+        .mission-head-wrap{max-width:1100px;margin:0 auto;padding:0 40px;position:relative}
+        .mission-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,118px);line-height:.92;color:var(--b)}
+        .mission-h2 .line{display:block;overflow:hidden}
+        .mission-h2 .line span{display:inline-block;transform:translateY(110%);opacity:0;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .mission-h2.visible .line span{transform:translateY(0);opacity:1}
+        .photo-float{position:absolute;right:20px;top:-10px;width:140px;height:180px;border-radius:12px;overflow:hidden;transform:rotate(3deg) scale(.85);opacity:0;transition:opacity .7s .4s,transform .7s .4s}
+        .photo-float.visible{opacity:1;transform:rotate(3deg) scale(1)}
+        .heart-doodle{position:absolute;right:180px;top:50px;opacity:0;transform:scale(0) rotate(-20deg);transition:opacity .6s .7s,transform .6s .7s}
+        .heart-doodle.visible{opacity:1;transform:scale(1) rotate(0deg)}
+
+        .mission-dark{background:var(--b);display:grid;grid-template-columns:1fr 1fr;min-height:320px;margin-top:60px}
+        .mission-dark-left{padding:48px 40px;position:relative;color:#fff}
+        .photo-float2{width:110px;height:140px;border-radius:10px;overflow:hidden;position:absolute;left:32px;top:50%;transform:translateY(-50%) translateX(-30px);opacity:0;transition:opacity .7s .8s,transform .7s .8s}
+        .photo-float2.visible{opacity:1;transform:translateY(-50%) translateX(0)}
+        .tag-y{display:inline-block;background:var(--y);color:var(--b);font-size:12px;font-weight:700;padding:3px 10px;border-radius:4px;margin-right:6px;margin-bottom:6px;font-style:italic}
+        .mission-dark-desc{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7;max-width:280px;margin-top:12px}
+        .mission-dark-right{background:linear-gradient(135deg,#d6a4a4 0%,#f0b060 50%,#e07050 100%);min-height:300px}
+
+        /* ── STEPS / SLIDER ── */
+        .steps-section{background:var(--b);padding:90px 0 100px;overflow:hidden}
+        .steps-header{display:flex;align-items:flex-end;justify-content:space-between;padding:0 60px;margin-bottom:60px}
+        .steps-label{display:inline-block;background:var(--p);color:#fff;font-size:11px;font-weight:600;padding:3px 12px;border-radius:20px;margin-bottom:16px;font-style:italic}
+        .steps-h{font-family:'Bebas Neue',sans-serif;line-height:.92;color:#fff}
+        .steps-line{overflow:hidden;display:block}
+        .steps-line span{display:block;transform:translateY(110%);opacity:0;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .4s}
+
+        /* slider */
+        .slider-wrap{position:relative;overflow:hidden;cursor:grab;user-select:none}
+        .slider-wrap:active{cursor:grabbing}
+        .slider-track{display:flex;gap:24px;padding:0 60px 40px;will-change:transform}
+        .slide-card{flex:0 0 320px;border-radius:20px;padding:28px 28px 44px;position:relative;border:2.5px solid var(--b);overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
+        .slide-card:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:8px 12px 0 rgba(255,229,0,.25)}
+        .slide-card.yellow{background:var(--y)}
+        .slide-card.purple{background:var(--p)}
+
+        /* progress bars top */
+        .card-progress{display:flex;gap:6px;margin-bottom:22px}
+        .cp-bar{height:3px;border-radius:2px;flex:1;background:rgba(0,0,0,.15)}
+        .cp-bar.active{background:rgba(0,0,0,.5)}
+        .purple .cp-bar{background:rgba(255,255,255,.25)}
+        .purple .cp-bar.active{background:rgba(255,255,255,.7)}
+
+        /* card header */
+        .card-head{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+        .card-ava{width:32px;height:32px;border-radius:50%;background:var(--b);display:flex;align-items:center;justify-content:center}
+        .card-ava-in{width:18px;height:18px;border-radius:50%;background:#f5a623}
+        .purple .card-ava{background:rgba(255,255,255,.2)}
+        .purple .card-ava-in{background:rgba(255,255,255,.8)}
+
+        /* stickers */
+        .card-stickers{min-height:80px;display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+        .stk{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.04em;padding:6px 16px;border-radius:10px;border:3px solid var(--b);box-shadow:3px 3px 0 var(--b);display:inline-block;line-height:1}
+        .stk.dark{background:var(--b);color:var(--y)}
+        .stk.light{background:var(--y);color:var(--b)}
+        .stk.white{background:#fff;color:var(--b);border-color:var(--b)}
+        .stk.rot-neg{transform:rotate(-8deg)}
+        .stk.rot-pos{transform:rotate(6deg)}
+        .stk.small{font-size:24px}
+        @keyframes rock{0%,100%{transform:rotate(0deg)}33%{transform:rotate(-4deg)}66%{transform:rotate(4deg)}}
+        @keyframes rock2{0%,100%{transform:rotate(6deg)}33%{transform:rotate(2deg)}66%{transform:rotate(10deg)}}
+        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        .slide-card:hover .stk{animation:rock .6s ease-in-out}
+
+        .card-num{font-size:12px;color:rgba(0,0,0,.4);font-weight:700;margin-bottom:6px;letter-spacing:.05em}
+        .purple .card-num{color:rgba(255,255,255,.5)}
+        .card-title{font-size:28px;font-weight:700;color:var(--b);margin-bottom:12px;line-height:1.2}
+        .purple .card-title{color:#fff}
+        .card-desc{font-size:14px;color:rgba(0,0,0,.55);line-height:1.65}
+        .purple .card-desc{color:rgba(255,255,255,.7)}
+
+        /* nav arrows */
+        .slider-nav{display:flex;align-items:center;gap:12px}
+        .slider-arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
+        .slider-arrow:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+        .slider-arrow:disabled{opacity:.3;cursor:default}
+        /* dots */
+        .slider-dots{display:flex;gap:8px;align-items:center}
+        .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .3s;cursor:pointer}
+        .dot.active{width:20px;border-radius:3px;background:#fff}
+
+        .features{background:var(--b);padding:80px 40px 100px;border-top:1px solid rgba(255,255,255,.1)}
+        .feat-grid{display:grid;grid-template-columns:1fr 1.6fr 1fr;max-width:1100px;margin:0 auto}
+        .feat-left{padding-right:40px;border-right:1px solid rgba(255,255,255,.1)}
+        .feat-left p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:28px;opacity:0;transform:translateX(-16px);transition:opacity .5s,transform .5s}
+        .feat-left p.visible{opacity:1;transform:translateX(0)}
+        .feat-center{padding:0 40px}
+        .feat-row{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:default;opacity:0;transform:translateY(24px);transition:opacity .55s,transform .55s}
+        .feat-row.visible{opacity:1;transform:translateY(0)}
+        .feat-row:last-child{border-bottom:none}
+        .feat-row:hover{transform:translateX(6px)!important;transition:transform .2s ease}
+        .feat-name{font-size:clamp(22px,3.2vw,36px);font-weight:700;color:#fff}
+        .feat-name.hl{color:var(--y)}
+        .badge{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;white-space:nowrap}
+        .feat-right{padding-left:40px;border-left:1px solid rgba(255,255,255,.1)}
+        .feat-right-row{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.06);opacity:0;transform:translateX(16px);transition:opacity .5s,transform .5s}
+        .feat-right-row.visible{opacity:1;transform:translateX(0)}
+        .feat-right-row:last-child{border-bottom:none}
+        .feat-right-row p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65}
+
+        footer{background:#fff;border-top:1.5px solid var(--b);padding:48px 40px 32px;display:flex;align-items:flex-start;justify-content:space-between}
+        .foot-logo{font-weight:700;font-size:22px;letter-spacing:.06em;text-transform:uppercase}
+        .foot-copy{font-size:12px;color:rgba(0,0,0,.35);margin-top:8px}
+        .foot-links{display:flex;gap:28px;list-style:none;padding-top:6px}
+        .foot-links a{font-size:13px;color:rgba(0,0,0,.45);transition:color .2s}.foot-links a:hover{color:var(--b)}
+
+        /* reveal helper */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+    </style>
+</head>
+<body>
+
+<nav class="reveal-nav">
+    <a href="#" class="nav-logo">PHASE</a>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">For whom</a></li>
+    </ul>
+    <a href="#" class="btn-login">Log in</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <span class="hero-badge reveal" style="transition-delay:.1s">Independent minds only</span>
+    <div style="position:relative;margin-bottom:20px">
+        <svg class="reveal" style="position:absolute;left:-64px;top:24px;width:44px;transition-delay:.5s" viewBox="0 0 48 28" fill="none">
+            <ellipse cx="24" cy="14" rx="20" ry="12" stroke="#C84BFF" stroke-width="2.5"/>
+            <circle cx="16" cy="11" r="2" fill="#C84BFF"/>
+            <circle cx="32" cy="11" r="2" fill="#C84BFF"/>
+            <path d="M17 18 Q24 23 31 18" stroke="#C84BFF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h1 class="hero-title reveal" style="transition-delay:.2s">PHASE</h1>
+    </div>
+    <p class="hero-sub reveal" style="transition-delay:.35s">Phase is your personal editorial storefront</p>
+    <a href="#" class="btn-cta reveal" style="transition-delay:.5s">↳ Create you Phase</a>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+    <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- MISSION -->
+<section class="mission">
+    <p class="mission-label reveal">Our mission</p>
+    <div class="mission-head-wrap">
+        <h2 class="mission-h2" id="missionH2">
+            <span class="line"><span>PHASE IS A</span></span>
+            <span class="line"><span>SPACE FOR CREATORS</span></span>
+            <span class="line"><span>TO BE SEEN</span></span>
+        </h2>
+        <div class="photo-float" id="photoFloat1" style="background:linear-gradient(135deg,#c9b8f0,#a07fda)">
+            <svg viewBox="0 0 140 180" style="width:100%;height:100%">
+                <rect width="140" height="180" fill="#b8a0e8"/>
+                <ellipse cx="70" cy="72" rx="28" ry="28" fill="#9070c8"/>
+                <rect x="30" y="110" width="80" height="70" rx="12" fill="#9070c8"/>
+            </svg>
+        </div>
+        <svg class="heart-doodle" id="heartDoodle" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 28C16 28 4 20 4 11.5C4 7.36 7.13 4 11 4C13.2 4 15.2 5.1 16 6.8C16.8 5.1 18.8 4 21 4C24.87 4 28 7.36 28 11.5C28 20 16 28 16Z" stroke="#C84BFF" stroke-width="2"/>
+        </svg>
+    </div>
+
+    <div class="mission-dark">
+        <div class="mission-dark-left">
+            <div class="photo-float2" id="photoFloat2" style="background:linear-gradient(135deg,#88d0b0,#4ba888)">
+                <svg viewBox="0 0 110 140" style="width:100%;height:100%">
+                    <rect width="110" height="140" fill="#70c0a0"/>
+                    <ellipse cx="55" cy="55" rx="22" ry="22" fill="#3a9870"/>
+                    <rect x="15" y="88" width="80" height="52" rx="10" fill="#3a9870"/>
+                </svg>
+            </div>
+            <div style="margin-left:136px">
+                <span class="tag-y reveal" style="transition-delay:.1s">Just you and your tribe</span>
+                <span class="tag-y reveal" style="transition-delay:.2s">Zero algorithm noise.</span>
+                <p class="mission-dark-desc reveal" style="transition-delay:.3s">Only your raw concepts, your curated drops, and the community that stands by your side</p>
+            </div>
+        </div>
+        <div class="mission-dark-right"></div>
+    </div>
+</section>
+
+<!-- STEPS SLIDER -->
+<section class="steps-section">
+    <div class="steps-header">
+        <div>
+            <span class="steps-label reveal">It's that simple</span>
+            <h2 class="steps-h" id="stepsH" style="font-size:clamp(52px,7vw,96px)">
+                <span class="steps-line"><span>THREE</span></span>
+                <span class="steps-line"><span>STEPS TO</span></span>
+                <span class="steps-line"><span>DROPS</span></span>
+            </h2>
+        </div>
+        <div class="slider-nav" id="sliderNav">
+            <button class="slider-arrow" id="prevBtn" aria-label="Previous">&#8592;</button>
+            <div class="slider-dots" id="sliderDots"></div>
+            <button class="slider-arrow" id="nextBtn" aria-label="Next">&#8594;</button>
+        </div>
+    </div>
+
+    <div class="slider-wrap" id="sliderWrap">
+        <div class="slider-track" id="sliderTrack">
+
+            <!-- Card 1: START yellow -->
+            <div class="slide-card yellow">
+                <div class="card-progress">
+                    <div class="cp-bar active"></div><div class="cp-bar"></div><div class="cp-bar"></div>
+                </div>
+                <div class="card-head">
+                    <div class="card-ava"><div class="card-ava-in"></div></div>
+                    <span style="font-weight:700;font-size:15px">Gifty</span>
+                </div>
+                <div class="card-stickers">
+                    <span class="stk dark rot-neg">START</span>
+                    <span class="stk light rot-pos small" style="margin-top:auto;align-self:flex-end">START</span>
+                </div>
+                <p class="card-num">01</p>
+                <h3 class="card-title">Create your account</h3>
+                <p class="card-desc">Sign up in under a minute. Claim your unique name and make the space yours.</p>
+            </div>
+
+            <!-- Card 2: ADD purple -->
+            <div class="slide-card purple">
+                <div class="card-progress">
+                    <div class="cp-bar active"></div><div class="cp-bar active"></div><div class="cp-bar"></div>
+                </div>
+                <div class="card-head">
+                    <div class="card-ava"><div class="card-ava-in"></div></div>
+                    <span style="font-weight:700;font-size:15px;color:#fff">Gifty</span>
+                </div>
+                <div class="card-stickers">
+                    <span class="stk light rot-neg">ADD</span>
+                    <span class="stk light rot-pos small" style="margin-top:auto;align-self:flex-end">ADD</span>
+                </div>
+                <p class="card-num">02</p>
+                <h3 class="card-title">Add your wishes</h3>
+                <p class="card-desc">Create lots: add a photo, title, price, and link to the item. Dream big — from a cup of coffee to a brand-new microphone.</p>
+            </div>
+
+            <!-- Card 3: SHARE yellow -->
+            <div class="slide-card yellow">
+                <div class="card-progress">
+                    <div class="cp-bar active"></div><div class="cp-bar active"></div><div class="cp-bar active"></div>
+                </div>
+                <div class="card-head">
+                    <div class="card-ava"><div class="card-ava-in"></div></div>
+                    <span style="font-weight:700;font-size:15px">Gifty</span>
+                </div>
+                <div class="card-stickers">
+                    <span class="stk white" style="margin-left:auto">SHARE</span>
+                </div>
+                <p class="card-num">03</p>
+                <h3 class="card-title">Share with your fans</h3>
+                <p class="card-desc">Copy your link and drop it in your bio, stories, or video description. Fans visit your storefront and gift you exactly what you want.</p>
+            </div>
+
+            <!-- Card 1 repeat small -->
+            <div class="slide-card yellow" style="flex:0 0 260px;opacity:.6">
+                <div class="card-progress">
+                    <div class="cp-bar active"></div><div class="cp-bar"></div><div class="cp-bar"></div>
+                </div>
+                <div class="card-head">
+                    <div class="card-ava"><div class="card-ava-in"></div></div>
+                    <span style="font-weight:700;font-size:14px">Gifty</span>
+                </div>
+                <div class="card-stickers">
+                    <span class="stk dark rot-neg" style="font-size:22px">START</span>
+                    <span class="stk light rot-pos" style="font-size:18px;margin-top:auto;align-self:flex-end">START</span>
+                </div>
+                <p class="card-num">01</p>
+                <h3 class="card-title" style="font-size:22px">Create your account</h3>
+                <p class="card-desc" style="font-size:13px">Sign up in under a minute. Claim your unique name and make the space yours.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="feat-grid">
+        <div class="feat-left" id="featLeft">
+            <p>A premium editorial layout featuring your aesthetic</p>
+            <p>Publish, modify your capsule drops instantly.</p>
+            <p>Visitors get live updates on availability.</p>
+            <p>A short, clean web address — phase.com/your-name.</p>
+            <p>Discover what your audience interacts with most.</p>
+        </div>
+        <div class="feat-center" id="featCenter">
+            <div class="feat-row"><span class="feat-name hl">Exhibition</span><span class="badge" style="background:var(--y);color:var(--b)">100% your DNA</span></div>
+            <div class="feat-row"><span class="feat-name">Capsules</span><span class="badge" style="background:transparent;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.2)">No missed drops</span></div>
+            <div class="feat-row"><span class="feat-name">Telemetry</span><span class="badge" style="background:transparent;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.2)">No missed drops</span></div>
+            <div class="feat-row"><span class="feat-name">Domain</span><span class="badge" style="background:transparent;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.2)">No more socials</span></div>
+            <div class="feat-row"><span class="feat-name">Impact</span><span class="badge" style="background:var(--p);color:#fff">Takes your breath away</span></div>
+        </div>
+        <div class="feat-right" id="featRight">
+            <div class="feat-right-row"><p>Your full creative vision, presented your way.</p></div>
+            <div class="feat-right-row"><p>Schedule and publish drops with zero friction.</p></div>
+            <div class="feat-right-row"><p>Real-time tracking keeps your community in the loop.</p></div>
+            <div class="feat-right-row"><p>Own your corner with a memorable address.</p></div>
+            <div class="feat-right-row"><p>Deep analytics surface what resonates most.</p></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>
+        <div class="foot-logo">PHASE</div>
+        <p class="foot-copy">© 2024 Phase. All rights reserved.</p>
+    </div>
+    <ul class="foot-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">For whom</a></li>
+        <li><a href="#">Privacy</a></li>
+    </ul>
+</footer>
+
+<script type="module">
+    /* ── Framer Motion via esm.sh ── */
+    import { animate, scroll, inView, stagger } from 'https://esm.sh/framer-motion@11?bundle'
+
+    /* NAV slide-in */
+    animate('nav', { y: [-60,0], opacity:[0,1] }, { duration:.6, ease:[.16,1,.3,1] })
+
+    /* HERO stagger */
+    const heroEls = document.querySelectorAll('.hero .reveal')
+    heroEls.forEach((el,i)=>{
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(40px)'
+        animate(el, { opacity:[0,1], y:[40,0] }, { duration:.7, delay:.1+i*.12, ease:[.16,1,.3,1] })
+    })
+
+    /* TICKER */
+    const tickerItems = ['YOUR IDENTITY','100%','FREE FOREVER','SHARE WITH YOUR AUDIENCE']
+    const track = document.getElementById('tickerTrack')
+    const repeated = [...tickerItems,...tickerItems,...tickerItems,...tickerItems]
+    track.innerHTML = repeated.map(t=>`<span style="display:inline-flex;align-items:center;gap:16px;padding-right:16px"><span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em">${t}</span><span style="opacity:.3">|</span></span>`).join('')
+
+    /* HERO parallax */
+    scroll(({ y })=>{
+        const progress = y.current / window.innerHeight
+        const heroContent = document.querySelector('.hero')
+        if(heroContent){
+            heroContent.style.transform = `translateY(${progress*80}px)`
+            heroContent.style.opacity = Math.max(0, 1 - progress * 1.4)
+        }
+    })
+
+    /* MISSION headline — letter by letter */
+    inView('#missionH2', ()=>{
+        const h2 = document.getElementById('missionH2')
+        h2.querySelectorAll('.line').forEach((line, li)=>{
+            const text = line.querySelector('span').textContent
+            line.innerHTML = ''
+            text.split('').forEach((ch,ci)=>{
+                const sp = document.createElement('span')
+                sp.style.display = 'inline-block'
+                sp.textContent = ch === ' ' ? '\u00A0' : ch
+                sp.style.opacity = '0'
+                sp.style.transform = 'translateY(110%)'
+                line.appendChild(sp)
+                animate(sp, { opacity:[0,1], y:['110%','0%'] }, {
+                    duration:.6, delay: li*.12 + ci*.018,
+                    ease:[.16,1,.3,1]
+                })
+            })
+        })
+        document.getElementById('photoFloat1')?.classList.add('visible')
+        document.getElementById('heartDoodle')?.classList.add('visible')
+    }, { margin:'-80px' })
+
+    /* mission dark */
+    inView('.mission-dark', ()=>{
+        document.getElementById('photoFloat2')?.classList.add('visible')
+        document.querySelectorAll('.mission-dark .reveal').forEach((el,i)=>{
+            animate(el, {opacity:[0,1], x:[-10,0]},{duration:.5,delay:.8+i*.1,ease:[.16,1,.3,1]})
+            el.style.opacity='1'
+        })
+    }, { margin:'-60px' })
+
+    /* STEPS headline */
+    inView('#stepsH', ()=>{
+        document.getElementById('stepsH').querySelectorAll('.steps-line').forEach((line,i)=>{
+            const sp = line.querySelector('span')
+            animate(sp, { y:['110%','0%'], opacity:[0,1] }, {
+                duration:.7, delay:.1+i*.12, ease:[.16,1,.3,1]
+            })
+        })
+    }, { margin:'-80px' })
+
+    /* ── SLIDER ── */
+    ;(()=>{
+        const track = document.getElementById('sliderTrack')
+        const wrap  = document.getElementById('sliderWrap')
+        const cards = Array.from(track.querySelectorAll('.slide-card'))
+        const CARD_W = 320 + 24  // card width + gap
+        const VISIBLE = 3        // how many "real" slides
+        let current = 0
+        let startX = 0, isDragging = false, dragStartX = 0, currentX = 0
+
+        /* dots */
+        const dotsEl = document.getElementById('sliderDots')
+        cards.slice(0, VISIBLE).forEach((_,i)=>{
+            const d = document.createElement('button')
+            d.className = 'dot' + (i===0?' active':'')
+            d.style.border='none';d.style.cursor='pointer'
+            d.addEventListener('click', ()=>goTo(i))
+            dotsEl.appendChild(d)
+        })
+
+        function updateDots(){
+            dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current))
+        }
+
+        function getOffset(idx){
+            // center the active card with 60px left padding
+            return -(idx * CARD_W)
+        }
+
+        function goTo(idx, instant=false){
+            current = Math.max(0, Math.min(VISIBLE-1, idx))
+            updateDots()
+            document.getElementById('prevBtn').disabled = current === 0
+            document.getElementById('nextBtn').disabled = current === VISIBLE-1
+
+            // Update card visual states
+            cards.forEach((card, i)=>{
+                const dist = Math.abs(i - current)
+                animate(card, {
+                    opacity: i < VISIBLE ? (dist===0 ? 1 : dist===1 ? 0.75 : 0.45) : 0.3,
+                    scale: dist===0 ? 1 : dist===1 ? 0.97 : 0.94,
+                }, { duration: instant ? 0 : .4, ease:[.16,1,.3,1] })
+            })
+
+            animate(track, { x: getOffset(current) }, {
+                duration: instant ? 0 : .55,
+                ease: [.16, 1, .3, 1]
+            })
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', ()=>goTo(current-1))
+        document.getElementById('nextBtn').addEventListener('click', ()=>goTo(current+1))
+
+        /* drag / swipe */
+        wrap.addEventListener('pointerdown', e=>{
+            isDragging = true
+            dragStartX = e.clientX
+            currentX = getOffset(current)
+            wrap.setPointerCapture(e.pointerId)
+        })
+        wrap.addEventListener('pointermove', e=>{
+            if(!isDragging) return
+            const dx = e.clientX - dragStartX
+            animate(track, { x: currentX + dx }, { duration:0 })
+        })
+        wrap.addEventListener('pointerup', e=>{
+            if(!isDragging) return
+            isDragging = false
+            const dx = e.clientX - dragStartX
+            if(dx < -60) goTo(current+1)
+            else if(dx > 60) goTo(current-1)
+            else goTo(current)
+        })
+
+        /* entry animation — cards fly in staggered */
+        inView('#sliderWrap', ()=>{
+            cards.forEach((card, i)=>{
+                animate(card, {
+                    opacity:[0, i < VISIBLE ? 1 : 0.3],
+                    y:[60,0],
+                    rotate:[-3,0]
+                }, {
+                    duration:.7, delay: i*.1,
+                    ease:[.16,1,.3,1]
+                })
+            })
+        }, { margin:'-60px' })
+
+        /* init */
+        goTo(0, true)
+        cards.forEach(c=>{ c.style.opacity='0'; c.style.transform='translateY(60px)' })
+    })()
+
+
+    /* FEATURES stagger */
+    inView('#featLeft', ()=>{
+        document.querySelectorAll('.feat-left p').forEach((el,i)=>{
+            animate(el, {opacity:[0,1], x:[-16,0]},{duration:.5,delay:i*.08,ease:[.16,1,.3,1]})
+            el.classList.add('visible')
+        })
+        document.querySelectorAll('.feat-row').forEach((el,i)=>{
+            animate(el, {opacity:[0,1], y:[24,0]},{duration:.55,delay:i*.09,ease:[.16,1,.3,1]})
+            el.classList.add('visible')
+        })
+        document.querySelectorAll('.feat-right-row').forEach((el,i)=>{
+            animate(el, {opacity:[0,1], x:[16,0]},{duration:.5,delay:i*.09,ease:[.16,1,.3,1]})
+            el.classList.add('visible')
+        })
+        /* hover on feat-rows */
+        document.querySelectorAll('.feat-row').forEach(row=>{
+            row.addEventListener('mouseenter',()=>animate(row,{x:[0,6]},{duration:.2}))
+            row.addEventListener('mouseleave',()=>animate(row,{x:[6,0]},{duration:.2}))
+        })
+    }, { margin:'-80px' })
+
+    /* generic .reveal fallback */
+    document.querySelectorAll('.reveal').forEach(el=>{
+        inView(el, ()=>{
+            if(parseFloat(getComputedStyle(el).opacity) < 0.5){
+                animate(el, {opacity:[0,1], y:[30,0]},{duration:.6,ease:[.16,1,.3,1]})
+            }
+        }, { margin:'-60px' })
+    })
+
+    /* CTA hover pulse */
+    const cta = document.querySelector('.btn-cta')
+    if(cta){
+        cta.addEventListener('mouseenter',()=>animate(cta,{scale:1.04},{duration:.2,type:'spring'}))
+        cta.addEventListener('mouseleave',()=>animate(cta,{scale:1},{duration:.2}))
+    }
+</script>
+</body>
+</html>

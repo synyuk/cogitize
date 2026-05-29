@@ -1,0 +1,21 @@
+{
+  "swap": {
+    "title": "Select cryptocurrency",
+    "subtitle": "Exchange crypto at the current preview rate",
+    "youSend": "You send",
+    "youReceive": "You receive",
+    "selectToken": "Select",
+    "searchToken": "Search token",
+    "loadingTokens": "Loading tokens...",
+    "noTokens": "No tokens found",
+    "swapAssets": "Swap assets",
+    "calculating": "Calculating rate",
+    "rate": "Rate",
+    "ratePlaceholder": "Enter an amount to preview the exchange rate",
+    "previewError": "Preview is unavailable for this pair right now",
+    "confirm": "Confirm",
+    "successTitle": "Exchange confirmed",
+    "successMessage": "You successfully exchanged {fromSymbol} {fromAmount} -> {toSymbol} {toAmount}",
+    "ok": "OK"
+  }
+}

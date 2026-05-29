@@ -1,0 +1,73 @@
+.scroll-bar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 2.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  width: 1rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: #adadad;
+  width: 0.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 2.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+textarea::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  width: 1rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #adadad;
+  border-radius: 0.5rem;
+  width: 0.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+.scroll-bar-horizontal::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+.scroll-bar-horizontal-slim::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+.scroll-bar-horizontal::-webkit-scrollbar-track {
+  background-color: #010101;
+  border-radius: 0.5rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+.scroll-bar-horizontal::-webkit-scrollbar-thumb {
+  background-color: #adadad;
+  border-radius: 0.5rem;
+  width: 0.25rem;
+  box-sizing: content-box;
+  cursor: pointer;
+}

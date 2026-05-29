@@ -1,0 +1,58 @@
+@layer theme, base, components, utilities;
+@config '../../../tailwind.config.ts';
+
+@import "tailwindcss";
+
+@import "./_variables.css" layer(utilities);
+@import "./_scroll-bar.css" layer(utilities);
+
+@custom-variant light (&:where(.light, .light *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1280px;
+  --breakpoint-desktop: 1920px;
+
+  --breakpoint-max-se: 375px;
+  --breakpoint-max-mobile: 767px;
+  --breakpoint-max-tablet: 1279px;
+  --breakpoint-max-laptop: 1919px;
+
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(240 10% 3.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(240 10% 3.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(240 10% 3.9%);
+  --color-primary: hsl(240 5.9% 10%);
+  --color-primary-foreground: hsl(0 0% 98%);
+  --color-secondary: hsl(240 4.8% 95.9%);
+  --color-secondary-foreground: hsl(240 5.9% 10%);
+  --color-muted: hsl(240 4.8% 95.9%);
+  --color-muted-foreground: hsl(240 3.8% 46.1%);
+  --color-accent: hsl(240 4.8% 95.9%);
+  --color-accent-foreground: hsl(240 5.9% 10%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+  --color-border: hsl(240 5.9% 90%);
+  --color-input: hsl(240 5.9% 90%);
+  --color-ring: hsl(240 10% 3.9%);
+  --color-chart-1: hsl(12 76% 61%);
+  --color-chart-2: hsl(173 58% 39%);
+  --color-chart-3: hsl(197 37% 24%);
+  --color-chart-4: hsl(43 74% 66%);
+  --color-chart-5: hsl(27 87% 67%);
+
+  --screens-hover: {
+    raw: "(hover: hover)";
+  };
+}
+
+.dark {
+  --color-primary: yellow; /* color for dark */
+}
+
+:root {
+  /* for variables  not use tailwind classes */
+}

@@ -1,0 +1,188 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - link "PHASE" [ref=e4] [cursor=pointer]:
+      - /url: "#"
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e8]:
+        - link "How it works" [ref=e9] [cursor=pointer]:
+          - /url: "#steps"
+      - listitem [ref=e10]:
+        - link "Features" [ref=e11] [cursor=pointer]:
+          - /url: "#features"
+      - listitem [ref=e12]:
+        - link "For whom" [ref=e13] [cursor=pointer]:
+          - /url: "#mission"
+    - link "Log in" [ref=e14] [cursor=pointer]:
+      - /url: "#"
+  - generic [ref=e15]:
+    - generic [ref=e16]: Independent minds only
+    - generic [ref=e17]:
+      - img [ref=e18]
+      - heading "PHASE" [level=1] [ref=e23]
+    - paragraph [ref=e24]: Phase is your personal editorial storefront
+    - link "Create you Phase" [ref=e25] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e26]: ↳
+      - text: Create you Phase
+  - generic [ref=e28]:
+    - generic [ref=e29]:
+      - generic [ref=e30]: YOUR IDENTITY
+      - generic [ref=e31]: "|"
+    - generic [ref=e32]:
+      - generic [ref=e33]: 100%
+      - generic [ref=e34]: "|"
+    - generic [ref=e35]:
+      - generic [ref=e36]: FREE FOREVER
+      - generic [ref=e37]: "|"
+    - generic [ref=e38]:
+      - generic [ref=e39]: SHARE WITH YOUR AUDIENCE
+      - generic [ref=e40]: "|"
+    - generic [ref=e41]:
+      - generic [ref=e42]: YOUR IDENTITY
+      - generic [ref=e43]: "|"
+    - generic [ref=e44]:
+      - generic [ref=e45]: 100%
+      - generic [ref=e46]: "|"
+    - generic [ref=e47]:
+      - generic [ref=e48]: FREE FOREVER
+      - generic [ref=e49]: "|"
+    - generic [ref=e50]:
+      - generic [ref=e51]: SHARE WITH YOUR AUDIENCE
+      - generic [ref=e52]: "|"
+    - generic [ref=e53]:
+      - generic [ref=e54]: YOUR IDENTITY
+      - generic [ref=e55]: "|"
+    - generic [ref=e56]:
+      - generic [ref=e57]: 100%
+      - generic [ref=e58]: "|"
+    - generic [ref=e59]:
+      - generic [ref=e60]: FREE FOREVER
+      - generic [ref=e61]: "|"
+    - generic [ref=e62]:
+      - generic [ref=e63]: SHARE WITH YOUR AUDIENCE
+      - generic [ref=e64]: "|"
+    - generic [ref=e65]:
+      - generic [ref=e66]: YOUR IDENTITY
+      - generic [ref=e67]: "|"
+    - generic [ref=e68]:
+      - generic [ref=e69]: 100%
+      - generic [ref=e70]: "|"
+    - generic [ref=e71]:
+      - generic [ref=e72]: FREE FOREVER
+      - generic [ref=e73]: "|"
+    - generic [ref=e74]:
+      - generic [ref=e75]: SHARE WITH YOUR AUDIENCE
+      - generic [ref=e76]: "|"
+  - generic [ref=e77]:
+    - paragraph [ref=e78]: Our mission
+    - generic [ref=e79]:
+      - heading "PHASE IS A SPACE FOR CREATORS TO BE SEEN" [level=2] [ref=e80]:
+        - generic [ref=e82]: PHASE IS A
+        - generic [ref=e84]: SPACE FOR CREATORS
+        - generic [ref=e86]: TO BE SEEN
+      - img [ref=e88]
+      - img
+    - generic [ref=e93]:
+      - img [ref=e95]
+      - generic [ref=e99]:
+        - generic [ref=e100]: Just you and your tribe
+        - generic [ref=e101]: Zero algorithm noise.
+        - paragraph [ref=e102]: Only your raw concepts, your curated drops, and the community that stands by your side
+  - generic [ref=e104]:
+    - generic [ref=e105]:
+      - generic [ref=e106]:
+        - generic [ref=e107]: It's that simple
+        - heading "THREE STEPS TO DROPS" [level=2] [ref=e108]:
+          - generic [ref=e110]: THREE
+          - generic [ref=e112]: STEPS TO
+          - generic [ref=e114]: DROPS
+      - generic [ref=e115]:
+        - button "Previous" [disabled] [ref=e116]: ←
+        - generic [ref=e117]:
+          - button "Go to step 01" [ref=e118] [cursor=pointer]
+          - button "Go to step 02" [ref=e119] [cursor=pointer]
+          - button "Go to step 03" [ref=e120] [cursor=pointer]
+        - button "Next" [ref=e121] [cursor=pointer]: →
+    - generic [ref=e123]:
+      - article [ref=e124]:
+        - generic [ref=e132]: Gifty
+        - generic [ref=e133]:
+          - generic [ref=e134]: START
+          - generic [ref=e135]: START
+        - paragraph [ref=e136]: "01"
+        - heading "Create your account" [level=3] [ref=e137]
+        - paragraph [ref=e138]: Sign up in under a minute. Claim your unique name and make the space yours.
+      - article [ref=e139]:
+        - generic [ref=e147]: Gifty
+        - generic [ref=e148]:
+          - generic [ref=e149]: ADD
+          - generic [ref=e150]: ADD
+        - paragraph [ref=e151]: "02"
+        - heading "Add your wishes" [level=3] [ref=e152]
+        - paragraph [ref=e153]: "Create lots: add a photo, title, price, and link to the item. Dream big - from a cup of coffee to a brand-new microphone."
+      - article [ref=e154]:
+        - generic [ref=e162]: Gifty
+        - generic [ref=e164]: SHARE
+        - paragraph [ref=e165]: "03"
+        - heading "Share with your fans" [level=3] [ref=e166]
+        - paragraph [ref=e167]: Copy your link and drop it in your bio, stories, or video description. Fans visit your storefront and gift you exactly what you want.
+      - article [ref=e168]:
+        - generic [ref=e176]: Gifty
+        - generic [ref=e177]:
+          - generic [ref=e178]: START
+          - generic [ref=e179]: START
+        - paragraph [ref=e180]: "01"
+        - heading "Create your account" [level=3] [ref=e181]
+        - paragraph [ref=e182]: Sign up in under a minute. Claim your unique name and make the space yours.
+  - generic [ref=e184]:
+    - generic [ref=e185]:
+      - paragraph [ref=e186]: A premium editorial layout featuring your aesthetic
+      - paragraph [ref=e187]: Publish, modify your capsule drops instantly.
+      - paragraph [ref=e188]: Visitors get live updates on availability.
+      - paragraph [ref=e189]: A short, clean web address - phase.com/your-name.
+      - paragraph [ref=e190]: Discover what your audience interacts with most.
+    - generic [ref=e191]:
+      - generic [ref=e192]:
+        - generic [ref=e193]: Exhibition
+        - generic [ref=e194]: 100% your DNA
+      - generic [ref=e195]:
+        - generic [ref=e196]: Capsules
+        - generic [ref=e197]: No missed drops
+      - generic [ref=e198]:
+        - generic [ref=e199]: Telemetry
+        - generic [ref=e200]: No missed drops
+      - generic [ref=e201]:
+        - generic [ref=e202]: Domain
+        - generic [ref=e203]: No more socials
+      - generic [ref=e204]:
+        - generic [ref=e205]: Impact
+        - generic [ref=e206]: Takes your breath away
+    - generic [ref=e207]:
+      - paragraph [ref=e209]: Your full creative vision, presented your way.
+      - paragraph [ref=e211]: Schedule and publish drops with zero friction.
+      - paragraph [ref=e213]: Real-time tracking keeps your community in the loop.
+      - paragraph [ref=e215]: Own your corner with a memorable address.
+      - paragraph [ref=e217]: Deep analytics surface what resonates most.
+  - contentinfo [ref=e218]:
+    - generic [ref=e219]:
+      - generic [ref=e220]: PHASE
+      - paragraph [ref=e221]: © 2024 Phase. All rights reserved.
+    - list [ref=e222]:
+      - listitem [ref=e223]:
+        - link "Home" [ref=e224] [cursor=pointer]:
+          - /url: "#"
+      - listitem [ref=e225]:
+        - link "How it works" [ref=e226] [cursor=pointer]:
+          - /url: "#steps"
+      - listitem [ref=e227]:
+        - link "Features" [ref=e228] [cursor=pointer]:
+          - /url: "#features"
+      - listitem [ref=e229]:
+        - link "For whom" [ref=e230] [cursor=pointer]:
+          - /url: "#mission"
+      - listitem [ref=e231]:
+        - link "Privacy" [ref=e232] [cursor=pointer]:
+          - /url: "#"
